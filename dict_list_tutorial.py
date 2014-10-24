@@ -15,4 +15,3 @@ country_specialties = dict(zip(countries, dishes))
 # print values
 # print keys
 
-print country_specialties
