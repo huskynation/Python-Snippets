@@ -2,12 +2,13 @@ __author__ = 'INKQWIRE'
 
 import os, csv, json, re
 import sqlite3
-# import pandas
+
 
 conn = sqlite3.connect('US_500.sqlite')
 conn.text_factory = str
 cursor = conn.cursor()
-reader = cursor.execute ("SELECT phone1 FROM SampleData")
+reader = cursor.execute ("SELECT phone1 FROM SampleData where phone1 LIKE '%%' GROUP BY substr(phone1, 5) ")
+# reader = cursor.execute ("SELECT phone1 FROM SampleData where phone1 LIKE '________%' ORDER BY phone1 desc")
 
 tabledata = cursor.fetchall()
 for row in (tabledata):
